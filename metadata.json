@@ -1,8 +1,9 @@
 {
   "name": "pnx-webserver",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "author": "Nick Schuch",
   "summary": "Webserver layer for PNX hosting",
+  "license": "Apache-2.0",
   "source": "https://github.com/previousnext/previousnext-webserver.git",
   "project_page": "https://github.com/previousnext/previousnext-webserver",
   "issues_url": "https://github.com/previousnext/previousnext-webserver/issues",
