@@ -1,0 +1,60 @@
+# A custom PHP class.
+
+class webserver::php (
+  # INI.
+  $display_errors      = false,
+  $memory_limit        = '128M',
+  $post_max_size       = '20M',
+  $upload_max_filesize = '20M',
+  $max_execution_time  = '300',
+  $date_timezone       = 'Australia/Sydney',
+  $error_log           = 'syslog',
+
+  # APC.
+  $apc_shm_size        = '64',
+){
+
+  # Repositories.
+  apt::ppa { 'ppa:ondrej/php5': }
+
+  # Packages.
+  package { 'libapache2-mod-php5': ensure => 'installed', require => Apt::Ppa['ppa:ondrej/php5'] }
+  package { 'php5':                ensure => 'installed', require => Apt::Ppa['ppa:ondrej/php5'] }
+  package { 'php5-dev':            ensure => 'installed', require => Apt::Ppa['ppa:ondrej/php5'] }
+  package { 'php5-gd':             ensure => 'installed', require => Apt::Ppa['ppa:ondrej/php5'] }
+  package { 'php5-mcrypt':         ensure => 'installed', require => Apt::Ppa['ppa:ondrej/php5'] }
+  package { 'php5-curl':           ensure => 'installed', require => Apt::Ppa['ppa:ondrej/php5'] }
+  package { 'php5-apcu':           ensure => 'installed', require => Apt::Ppa['ppa:ondrej/php5'] }
+
+  # Configuration.
+  webserver::php::ini { '/etc/php5/apache2/php.ini':
+    display_errors      => $display_errors,
+    memory_limit        => $memory_limit,
+    post_max_size       => $post_max_size,
+    upload_max_filesize => $upload_max_filesize,
+    max_execution_time  => $max_execution_time,
+    date_timezone       => $date_timezone,
+    error_log           => $error_log,
+    require             => Package['libapache2-mod-php5'],
+  }
+  webserver::php::ini { '/etc/php5/cli/php.ini':
+    display_errors      => $display_errors,
+    memory_limit        => $memory_limit,
+    post_max_size       => $post_max_size,
+    upload_max_filesize => $upload_max_filesize,
+    max_execution_time  => $max_execution_time,
+    date_timezone       => $date_timezone,
+    error_log           => $error_log,
+    require             => Package['libapache2-mod-php5'],
+  }
+
+  webserver::php::apcu { '/etc/php5/apache2/conf.d/20-apcu.ini':
+    apc_shm_size => $apc_shm_size,
+    require      => Package['php5-apcu'],
+  }
+  webserver::php::apcu { '/etc/php5/cli/conf.d/20-apcu.ini':
+    apc_shm_size => $apc_shm_size,
+    require      => Package['php5-apcu'],
+  }
+
+}
