@@ -16,6 +16,7 @@ class webserver::php (
 
   # Repositories.
   apt::ppa { 'ppa:ondrej/php5': }
+  apt::key { "ondrej": key => "E5267A6C" }
 
   # Packages.
   package { 'libapache2-mod-php5': ensure => 'installed', require => Apt::Ppa['ppa:ondrej/php5'] }
