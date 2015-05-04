@@ -40,7 +40,7 @@ class webserver::php (
   }
   webserver::php::ini { '/etc/php5/cli/php.ini':
     display_errors      => $display_errors,
-    memory_limit        => $memory_limit,
+    memory_limit        => '-1',
     post_max_size       => $post_max_size,
     upload_max_filesize => $upload_max_filesize,
     max_execution_time  => $max_execution_time,
