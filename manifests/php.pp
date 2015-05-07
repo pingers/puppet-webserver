@@ -2,16 +2,16 @@
 
 class webserver::php (
   # INI.
-  $display_errors      = false,
-  $memory_limit        = '128M',
-  $post_max_size       = '20M',
-  $upload_max_filesize = '20M',
-  $max_execution_time  = '300',
-  $date_timezone       = 'Australia/Sydney',
-  $error_log           = 'syslog',
+  $display_errors      = hiera('php_display_errors',      'false'),
+  $memory_limit        = hiera('php_memory_limit',        '128M'),
+  $post_max_size       = hiera('php_post_max_size',       '20M'),
+  $upload_max_filesize = hiera('php_upload_max_filesize', '20M'),
+  $max_execution_time  = hiera('php_max_execution_time',  '300'),
+  $date_timezone       = hiera('php_date_timezone',       'Australia/Sydney'),
+  $error_log           = hiera('php_error_log',           'syslog'),
 
   # APC.
-  $apc_shm_size        = '64',
+  $apc_shm_size        = hiera('php_apc_shm_size',        '64'),
 ){
 
   # Repositories.
