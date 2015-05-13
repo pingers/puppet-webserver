@@ -23,6 +23,8 @@
     },{
       "name": "saz/memcached",
       "version_requirement": ">= 2.6.0"
+    },{
+      "name": "eymengunay/wkhtmltopdf"
     }
   ]
 }

@@ -3,6 +3,7 @@
 class webserver {
 
   include php
+  include wkhtmltopdf
 
   class { 'apache':
     default_vhost => false,
