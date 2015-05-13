@@ -4,9 +4,11 @@ class webserver {
 
   include php
 
-  $wkhtmltopdf = hiera_hash('wkhtmltopdf', false)
+  $wkhtmltopdf = hiera('wkhtmltopdf', false)
   if wkhtmltopdf {
-    include wkhtmltopdf
+    package { 'wkhtmltopdf':
+      ensure => present
+    }
   }
 
   class { 'apache':
