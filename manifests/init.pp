@@ -3,7 +3,11 @@
 class webserver {
 
   include php
-  include wkhtmltopdf
+
+  $wkhtmltopdf = hiera_hash('wkhtmltopdf', false)
+  if wkhtmltopdf {
+    include wkhtmltopdf
+  }
 
   class { 'apache':
     default_vhost => false,
