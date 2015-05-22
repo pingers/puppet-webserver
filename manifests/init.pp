@@ -11,7 +11,7 @@ class webserver {
     }
     file { '/usr/local/bin/wkhtmltopdf':
       ensure  => 'link',
-      target  => '/usr/bin/wkhtmltopd',
+      target  => '/usr/bin/wkhtmltopdf',
       require => Package['wkhtmltopdf'],
     }
   }
