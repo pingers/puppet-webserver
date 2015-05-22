@@ -9,6 +9,11 @@ class webserver {
     package { 'wkhtmltopdf':
       ensure => present
     }
+    file { '/usr/local/bin/wkhtmltopdf':
+      ensure  => 'link',
+      target  => '/usr/bin/wkhtmltopd',
+      require => Package['wkhtmltopdf'],
+    }
   }
 
   class { 'apache':
