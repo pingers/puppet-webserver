@@ -1,6 +1,6 @@
 {
   "name": "pnx-webserver",
-  "version": "0.0.5",
+  "version": "0.0.12",
   "author": "Nick Schuch",
   "summary": "Webserver layer for PNX hosting",
   "license": "Apache-2.0",
@@ -23,6 +23,9 @@
     },{
       "name": "saz/memcached",
       "version_requirement": ">= 2.6.0"
+    },{
+      "name": "jlondon/wkhtmltox",
+      "version_requirement": "1.0.6"
     }
   ]
 }

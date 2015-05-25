@@ -6,13 +6,8 @@ class webserver {
 
   $wkhtmltopdf = hiera('wkhtmltopdf', false)
   if wkhtmltopdf {
-    package { 'wkhtmltopdf':
-      ensure => present
-    }
-    file { '/usr/local/bin/wkhtmltopdf':
-      ensure  => 'link',
-      target  => '/usr/bin/wkhtmltopdf',
-      require => Package['wkhtmltopdf'],
+    class { 'wkhtmltox':
+      ensure => present,
     }
   }
 
