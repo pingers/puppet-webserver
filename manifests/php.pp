@@ -11,7 +11,7 @@ class webserver::php (
   $error_log           = hiera('php_error_log',           'syslog'),
 
   # APC.
-  $apc_shm_size        = hiera('php_apc_shm_size',        '64'),
+  $apc_shm_size        = hiera('php_apc_shm_size',        '64M'),
 ){
 
   # Repositories.
