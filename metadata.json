@@ -26,6 +26,8 @@
     },{
       "name": "jlondon/wkhtmltox",
       "version_requirement": "1.0.6"
+    },{
+      "name": "previousnext/cloudwatchlogs",
     }
   ]
 }
