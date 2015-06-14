@@ -1,6 +1,6 @@
 {
   "name": "pnx-webserver",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "author": "Nick Schuch",
   "summary": "Webserver layer for PNX hosting",
   "license": "Apache-2.0",
@@ -26,6 +26,8 @@
     },{
       "name": "jlondon/wkhtmltox",
       "version_requirement": "1.0.6"
+    },{
+      "name": "previousnext/cloudwatchlogs"
     }
   ]
 }

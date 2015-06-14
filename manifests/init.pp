@@ -36,6 +36,11 @@ class webserver {
     package_ensure => 'present',
   }
 
+  $logging = hiera("logging", false)
+  if $logging {
+    include webserver::logging
+  }
+
   ##
   # Hiera.
   ##
