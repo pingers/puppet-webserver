@@ -5,7 +5,7 @@ class webserver {
   include php
 
   $wkhtmltopdf = hiera('wkhtmltopdf', false)
-  if wkhtmltopdf {
+  if $wkhtmltopdf {
     class { 'wkhtmltox':
       ensure => present,
     }
