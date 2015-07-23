@@ -26,7 +26,8 @@ class webserver::php (
   package { 'php5-mcrypt':         ensure => 'installed', require => Apt::Ppa['ppa:ondrej/php5'] }
   package { 'php5-curl':           ensure => 'installed', require => Apt::Ppa['ppa:ondrej/php5'] }
   package { 'php5-apcu':           ensure => 'installed', require => Apt::Ppa['ppa:ondrej/php5'] }
-  package { 'php5-mysql': ensure => 'installed', require => Apt::Ppa['ppa:ondrej/php5'] }
+  package { 'php5-mysql':          ensure => 'installed', require => Apt::Ppa['ppa:ondrej/php5'] }
+  package { 'php5-memcache':       ensure => 'installed', require => Apt::Ppa['ppa:ondrej/php5'] }
 
   # Configuration.
   webserver::php::ini { '/etc/php5/apache2/php.ini':
