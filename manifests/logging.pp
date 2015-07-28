@@ -4,12 +4,12 @@ class webserver::logging {
 
   # Access logs.
   cloudwatchlogs::log { '/var/log/apache2/*access.log':
-    group => 'Webserver - Access',
+    group => 'WebserverAccess',
   }
 
   # Error logs.
   cloudwatchlogs::log { '/var/log/apache2/*error.log':
-    group => 'Webserver - Error',
+    group => 'WebserverError',
   }
 
 }
