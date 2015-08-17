@@ -36,14 +36,14 @@ class webserver {
 
   # Needed to ensure Include /etc/apache2/conf.d/*.conf
   # doesn't fatally exit
-  apache::custom_config { 'placeholder':
-    content => '',
+  apache::custom_config { 'placeholder.conf':
+    content => '# This file intentionally left blank',
   }
 
   # Ensure php5.conf is loaded (Apache 2.4 seems to want
   # to remove it otherwise - possibly a bug in
   # puppetlabs-apache module?
-  file { '/etc/php5/mods-enabled/php5.conf':
+  file { '/etc/apache2/mods-enabled/php5.conf':
     ensure  => link,
     target  => '/etc/apache2/mods-available/php5.conf',
     require => Package['libapache2-mod-php5'],
