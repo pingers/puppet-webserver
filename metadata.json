@@ -25,7 +25,7 @@
       "version_requirement": ">= 2.6.0"
     },{
       "name": "jlondon/wkhtmltox",
-      "version_requirement": "1.0.6"
+      "version_requirement": "1.0.9"
     },{
       "name": "previousnext/cloudwatchlogs"
     }
