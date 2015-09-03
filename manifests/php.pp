@@ -15,22 +15,24 @@ class webserver::php (
 ){
 
   # Repositories.
-  apt::ppa { 'ppa:ondrej/php5': }
+  apt::ppa { 'ppa:ondrej/php5-5.6': }
   apt::key { "ondrej": key => "E5267A6C" }
 
   # Packages.
-  package { 'libapache2-mod-php5': ensure => 'installed', require => Apt::Ppa['ppa:ondrej/php5'] }
-  package { 'php5':                ensure => 'installed', require => Apt::Ppa['ppa:ondrej/php5'] }
-  package { 'php5-dev':            ensure => 'installed', require => Apt::Ppa['ppa:ondrej/php5'] }
-  package { 'php5-gd':             ensure => 'installed', require => Apt::Ppa['ppa:ondrej/php5'] }
-  package { 'php5-mcrypt':         ensure => 'installed', require => Apt::Ppa['ppa:ondrej/php5'] }
-  package { 'php5-curl':           ensure => 'installed', require => Apt::Ppa['ppa:ondrej/php5'] }
-  package { 'php5-apcu':           ensure => 'installed', require => Apt::Ppa['ppa:ondrej/php5'] }
-  package { 'php5-mysql':          ensure => 'installed', require => Apt::Ppa['ppa:ondrej/php5'] }
-  package { 'php5-memcache':       ensure => 'installed', require => Apt::Ppa['ppa:ondrej/php5'] }
+  package { 'libapache2-mod-php5': ensure => 'installed', require => Apt::Ppa['ppa:ondrej/php5-5.6'] }
+  package { 'php5':                ensure => 'installed', require => Apt::Ppa['ppa:ondrej/php5-5.6'] }
+  package { 'php5-apcu':           ensure => 'installed', require => Apt::Ppa['ppa:ondrej/php5-5.6'] }
+  package { 'php5-curl':           ensure => 'installed', require => Apt::Ppa['ppa:ondrej/php5-5.6'] }
+  package { 'php5-dev':            ensure => 'installed', require => Apt::Ppa['ppa:ondrej/php5-5.6'] }
+  package { 'php5-gd':             ensure => 'installed', require => Apt::Ppa['ppa:ondrej/php5-5.6'] }
+  package { 'php5-ldap':           ensure => 'installed', require => Apt::Ppa['ppa:ondrej/php5-5.6'] }
+  package { 'php5-mcrypt':         ensure => 'installed', require => Apt::Ppa['ppa:ondrej/php5-5.6'] }
+  package { 'php5-memcache':       ensure => 'installed', require => Apt::Ppa['ppa:ondrej/php5-5.6'] }
+  package { 'php5-mysql':          ensure => 'installed', require => Apt::Ppa['ppa:ondrej/php5-5.6'] }
+  package { 'php5-oauth':          ensure => 'installed', require => Apt::Ppa['ppa:ondrej/php5-5.6'] }
 
   # Configuration.
-  webserver::php::ini { '/etc/php5/apache2/php.ini':
+  webserver::php::ini { '/etc/php5-5.6/apache2/php.ini':
     display_errors      => $display_errors,
     memory_limit        => $memory_limit,
     post_max_size       => $post_max_size,
@@ -40,7 +42,7 @@ class webserver::php (
     error_log           => $error_log,
     require             => Package['libapache2-mod-php5'],
   }
-  webserver::php::ini { '/etc/php5/cli/php.ini':
+  webserver::php::ini { '/etc/php5-5.6/cli/php.ini':
     display_errors      => $display_errors,
     memory_limit        => '-1',
     post_max_size       => $post_max_size,
