@@ -32,7 +32,7 @@ class webserver::php (
   package { 'php5-oauth':          ensure => 'installed', require => Apt::Ppa['ppa:ondrej/php5-5.6'] }
 
   # Configuration.
-  webserver::php::ini { '/etc/php5-5.6/apache2/php.ini':
+  webserver::php::ini { '/etc/php5/apache2/php.ini':
     display_errors      => $display_errors,
     memory_limit        => $memory_limit,
     post_max_size       => $post_max_size,
@@ -42,7 +42,7 @@ class webserver::php (
     error_log           => $error_log,
     require             => Package['libapache2-mod-php5'],
   }
-  webserver::php::ini { '/etc/php5-5.6/cli/php.ini':
+  webserver::php::ini { '/etc/php5/cli/php.ini':
     display_errors      => $display_errors,
     memory_limit        => '-1',
     post_max_size       => $post_max_size,
