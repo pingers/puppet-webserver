@@ -7,7 +7,7 @@ class webserver::php (
   $post_max_size       = hiera('php_post_max_size',       '20M'),
   $upload_max_filesize = hiera('php_upload_max_filesize', '20M'),
   $max_execution_time  = hiera('php_max_execution_time',  '300'),
-  $date_timezone       = hiera('php_date_timezone',       'Australia/Sydney'),
+  $date_timezone       = hiera('php_date_timezone',       'Australia/Adelaide'),
   $error_log           = hiera('php_error_log',           'syslog'),
 
   # APC.

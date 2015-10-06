@@ -8,7 +8,7 @@ define webserver::php::ini (
   $post_max_size       = '20M',
   $upload_max_filesize = '20M',
   $max_execution_time  = '300',
-  $date_timezone       = 'Australia/Sydney',
+  $date_timezone       = 'Australia/Adelaide',
   $error_log           = 'syslog',
 ) {
   file { $title:
