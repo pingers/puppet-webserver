@@ -16,6 +16,7 @@ class webserver {
     mpm_module    => 'prefork',
     manage_user   => false,
     manage_group  => false,
+    timeout       => hiera('apache_timeout', '120'),
   }
 
   class { 'composer':
