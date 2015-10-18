@@ -20,17 +20,23 @@ class webserver::php (
   apt::key { "ondrej": key => "E5267A6C" }
 
   # Packages.
-  package { 'libapache2-mod-php5': ensure => 'installed', require => Apt::Ppa['ppa:ondrej/php5-5.6'] }
-  package { 'php5':                ensure => 'installed', require => Apt::Ppa['ppa:ondrej/php5-5.6'] }
-  package { 'php5-apcu':           ensure => 'installed', require => Apt::Ppa['ppa:ondrej/php5-5.6'] }
-  package { 'php5-curl':           ensure => 'installed', require => Apt::Ppa['ppa:ondrej/php5-5.6'] }
-  package { 'php5-dev':            ensure => 'installed', require => Apt::Ppa['ppa:ondrej/php5-5.6'] }
-  package { 'php5-gd':             ensure => 'installed', require => Apt::Ppa['ppa:ondrej/php5-5.6'] }
-  package { 'php5-ldap':           ensure => 'installed', require => Apt::Ppa['ppa:ondrej/php5-5.6'] }
-  package { 'php5-mcrypt':         ensure => 'installed', require => Apt::Ppa['ppa:ondrej/php5-5.6'] }
-  package { 'php5-memcache':       ensure => 'installed', require => Apt::Ppa['ppa:ondrej/php5-5.6'] }
-  package { 'php5-mysql':          ensure => 'installed', require => Apt::Ppa['ppa:ondrej/php5-5.6'] }
-  package { 'php5-oauth':          ensure => 'installed', require => Apt::Ppa['ppa:ondrej/php5-5.6'] }
+  package {
+    [
+      'libapache2-mod-php5',
+      'php5-apcu',
+      'php5-curl',
+      'php5-dev',
+      'php5-gd',
+      'php5-ldap',
+      'php5-mcrypt',
+      'php5-memcache',
+      'php5-mysql',
+      'php5-oauth',
+      'php5-sqlite',
+      'php5-xdebug'
+    ]: ensure => 'installed',
+    require => Apt::Ppa['ppa:ondrej/php5-5.6'],
+  }
 
   # Configuration.
   webserver::php::ini { '/etc/php5/apache2/php.ini':
